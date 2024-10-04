@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <title>Feedback</title>
+  <style>
+    label {	float: left;
+			width: 150px;}
+      #container{
+          width: 700px;
+          margin: auto;
+          background-color: beige;
+      } 
+      main{
+          padding: 50px;
+      }
+  </style>
+ </head>
+ <body>
+ <div id="container">
+	 
+	 <main>
+	 <h2>Feeback</h2>
+	 <h3>Love something? Hate something? Let us know!</h3>
+		 Note : Fields marked with an asterisk(*) are mandatory
+		 <br><br>
+		 <form name="goForm" method="post" novalidate>
+			<label>Title*:</label>
+			<input type="radio" name="title" id="miss" value="miss" required="required"/>Miss
+			<input type="radio" name="title" id="mr" value="mr" required="required"/>Mr.
+			<input type="radio" name="title" id="mrs" value="mrs" required="required"/>Mrs.
+			<span id="titleError" style="color: red; display: none;">Please select a title</span>
+			<br><br>
+			<label for="firstName">First Name*:</label>
+			<input type="text" name="firstName" id="firstName" placeholder="First Name" class="validate"  />	
+			<span class="endmsg"></span>
+			<br><br>
+			
+
+			<label for="lastName">Last Name*:</label>
+			<input type="text" name="lastName" id="lastName" placeholder="Last Name" class="validate" />
+			<span class="endmsg"></span>
+			<br><br>
+			
+
+			<label for="emailId">Email Id*:</label>
+			<input type="text" name="emailId" id="emailId" placeholder="yourname@domain.com" class="validate" />
+			<span class="endmsg"></span>
+			<br><br>
+			
+
+			<label for="phoneNumber">Phone Number*:</label>
+			<input type="text" name="phoneNumber" id="phoneNumber" placeholder="xxx-xxx-xxxx" class="validate" />
+			<span class="endmsg"></span>
+			<br><br>
+
+			<label for="phoneNumber">Street Address 1*:</label>
+			<input type="text" name="address1" id="address" placeholder="address" class="validate" />
+			<span class="endmsg"></span>
+			<br><br>
+
+			<label for="phoneNumber">Street Address 2:</label>
+			<input type="text" name="address2" id="address" placeholder="address" class="validate" />
+			<span class="endmsg"></span>
+			<br><br>
+
+			<label for="phoneNumber">City:</label>
+			<input type="text" name="city" id="address" placeholder="city" class="validate" />
+			<span class="endmsg"></span>
+			<br><br>
+
+			<label for="phoneNumber">State:</label>
+			<input type="text" name="state" id="address" placeholder="state" class="validate" />
+			<span class="endmsg"></span>
+			<br><br>
+			
+            <label for="zipcode">ZipCode*:</label>
+			<input type="text" name="zipcode" id="zipcode" placeholder="xxxxxx" class="validate" />
+			<span class="endmsg"></span>
+			<br><br>
+             
+            <label for="zipcode">How did you hear*:</label>
+			<input type='checkbox' name="source" value="facebook" /> Facebook
+            <input type='checkbox' name="source" value="google" /> Google
+            <input type='checkbox' name="source" value="yelp" /> Yelp 
+			<span id="sourceError" style="color: red; display: none;">Please select at least one source</span>
+			<br><br> 
+
+			<label for="dynamicSelect">Choose an option:</label>
+			<select id="dynamicSelect">
+				<option value="Cold Coffee">Choose an option</option>
+				<option value="Cold Coffee">Cold Coffee</option>
+				<option value="Hot Coffee">Hot Coffee</option>
+				<option value="Mocha">Mocha</option>
+				<option value="Latte">Latte</option>
+				<option value="Americano">Americano</option>
+			</select>
+			<span id="selectError" style="color: red; display: none;">Please select a valid option</span>
+			<br><br> 
+			<div id="checkboxContainer"></div>
+			<br><br> 
+			<div id="optionContainer"></div>
+			<br><br> 
+			<label for="comments">Comments*:</label>
+<textarea name="text" id="comments" placeholder="Your comments" rows="5" cols="25"></textarea>
+<span id="commentsError" class="error-msg" style="color: red; display: none;">Comments cannot be empty.</span>
+<br><br>
+		
+			<br><br>
+			<input type="Submit" id="submitButton">
+			<input type="Reset">
+			<br><br>
+		 </form>
+	 </main>
+	 
+	  
+ </div>
+
+ <div id="tableContainer">
+	<table id="dataTable" border="1">
+	  <thead>
+		<tr>
+		  <th>Title</th>
+		  <th>First Name</th>
+		  <th>Last Name</th>
+		  <th>Email</th>
+		  <th>Phone Number</th>
+		  <th>Address 1</th>
+		  <th>Address 2</th>
+		  <th>City</th>
+		  <th>State</th>
+		  <th>Zip Code</th>
+		  <th>How did you hear</th>
+		  <th>Selected Coffee</th>
+		  <th>Extra Option</th>
+		  <th>Comments</th>
+		</tr>
+	  </thead>
+	  <tbody id="tableBody">
+		<!-- Form data will be appended here -->
+	  </tbody>
+	</table>
+  </div>
+
+ <script src="script.js"></script>
+
+ </body>
+</html>
