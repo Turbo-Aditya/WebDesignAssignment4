@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const inputs = document.querySelectorAll('.validate');
+    const resetButton = document.getElementById('resetButton');
     let message = document.querySelector('.endmsg')
     let minLength = 2;
     let maxLength = 10;
@@ -11,6 +12,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.getElementById('submitButton');
 
     submitButton.disabled = true;
+
+    //ok
+    resetButton.addEventListener('click', function() {
+        // Clear error messages
+        document.getElementById('titleError').style.display = 'none';
+        document.getElementById('sourceError').style.display = 'none';
+        document.getElementById('selectError').style.display = 'none';
+        document.getElementById('commentsError').style.display = 'none';
+        const messageElements = form.querySelectorAll('.endmsg');
+ 
+        messageElements.forEach((msgElement) => {
+            msgElement.textContent = ""; // Clear the message
+        });
+
+    
+        // Disable the submit button
+        submitButton.disabled = true;
+    });
 
     inputs.forEach(input => {
         input.addEventListener('input', function () {
@@ -183,6 +202,42 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             commentsError.style.display = 'none';
         }
+
+        //radio
+
+        const titleChecked = document.querySelector('input[name="title"]:checked');
+        const titleError = document.getElementById("titleError");
+        if (!titleChecked) {
+            titleError.style.display = 'inline';
+            allValid = false;
+        } else {
+            titleError.style.display = 'none';
+        }
+
+          // Check "How did you hear"
+          const sourceError = document.getElementById('sourceError');
+          if (!validateCheckboxes()) {
+              sourceError.style.display = 'inline';
+              allValid = false;
+          } else {
+              sourceError.style.display = 'none';
+          }
+
+           // Check "Choose an option" select field
+        const selectedOption = document.getElementById('dynamicSelect').value;
+        const selectError = document.getElementById('selectError');
+        if (!selectedOption || selectedOption === 'Select') {
+            selectError.style.display = 'inline';
+            allValid = false;
+        } else {
+            selectError.style.display = 'none';
+        }
+
+  
+
+
+
+
         submitButton.disabled = !allValid;
         // Disable the submit button if any input is invalid or empty
         submitButton.disabled = !allValid;
@@ -190,6 +245,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     commentsField.addEventListener('input', checkFormValidity);
     inputs.forEach(input => input.addEventListener('input', checkFormValidity));
+    document.getElementById('dynamicSelect').addEventListener('change', checkFormValidity);
+    document.querySelectorAll('input[name="title"]').forEach(radio => radio.addEventListener('change', checkFormValidity));
+    document.querySelectorAll('input[name="source"]').forEach(checkbox => checkbox.addEventListener('change', checkFormValidity));
 
     const selectList = document.getElementById('dynamicSelect');
     const checkboxContainer = document.getElementById('checkboxContainer');
@@ -302,6 +360,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         dataTable.style.display = 'table';
         form.reset();
+        submitButton.disabled = true;
 
 
         document.getElementById('checkboxContainer').innerHTML = '';
